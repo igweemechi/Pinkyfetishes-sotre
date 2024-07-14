@@ -323,4 +323,7 @@ header .totalQuantity{
         grid-template-columns: repeat(2, 1fr);
 
     }
+    .container header h1{
+        font-size:large;
+    }
 }
