@@ -114,3 +114,27 @@ function addCartToHTML(){
     totalHTML.innerText = totalQuantity;
 }
 
+function changeQuantity($idProduct, $type){
+    switch ($type) {
+        case '+':
+            listCart[$idProduct].quantity++;
+            break;
+        case '-':
+            listCart[$idProduct].quantity--;
+
+            // if quantity <= 0 then remove product in cart
+            if(listCart[$idProduct].quantity <= 0){
+                delete listCart[$idProduct];
+            }
+            break;
+    
+        default:
+            break;
+    }
+    // save new data in cookie
+    document.cookie = "listCart=" + JSON.stringify(listCart) + "; expires=Thu, 31 Dec 2025 23:59:59 UTC; path=/;";
+    // reload html view cart
+    addCartToHTML();
+}
+
+
